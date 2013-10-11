@@ -23,6 +23,8 @@ class Asterisk < Formula
 	
 	# use GCC instead of Clang
 	# ENV['CC']= '/usr/bin/gcc'
+	ENV['CC'] = '/usr/local/bin/llvm-gcc'
+	
 	
     args = ["--prefix=#{prefix}"
     		
