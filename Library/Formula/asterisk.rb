@@ -20,6 +20,7 @@ class Asterisk < Formula
   
   depends_on 'gtk+'
   depends_on 'net-snmp'
+  depends_on 'ncurses' => :recommended
 
 
   def install
