@@ -17,6 +17,9 @@ class Asterisk < Formula
   # option 'with-qt', 'Use QT for GUI instead of GTK+'
 
   depends_on 'pkg-config' => :build
+  
+  depends_on 'gtk+'
+  depends_on 'net-snmp'
 
 
   def install
