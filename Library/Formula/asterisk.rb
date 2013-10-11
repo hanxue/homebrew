@@ -20,7 +20,10 @@ class Asterisk < Formula
 
 
   def install
-
+	
+	# use GCC instead of Clang
+	# ENV['CC']= '/usr/bin/gcc'
+	
     args = ["--prefix=#{prefix}"
     		
     		]
