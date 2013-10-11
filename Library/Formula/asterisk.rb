@@ -15,6 +15,9 @@ class Asterisk < Formula
   end
 
   # option 'with-qt', 'Use QT for GUI instead of GTK+'
+  if build.with? 'ncurses'
+  	depends_on 'ncurses'
+  end
 
   depends_on 'pkg-config' => :build
   
