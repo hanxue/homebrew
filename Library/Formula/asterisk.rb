@@ -26,7 +26,7 @@ class Asterisk < Formula
 	ENV['CC'] = '/usr/local/bin/llvm-gcc'
 	
 	
-    args = ["--prefix=#{prefix}"
+    args = [
     		
     		]
 
