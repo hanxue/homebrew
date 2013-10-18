@@ -14,7 +14,8 @@ class Scribes < Formula
   depends_on 'pkg-config' => :build
   depends_on 'intltool'
   depends_on :x11 
-  depends_on :python => ['dbus-python']
+  depends_on :python
+  depends_on "dbus-python"
   depends_on "pygtk"
   depends_on "d-bus"
   depends_on "gtkspell3"
