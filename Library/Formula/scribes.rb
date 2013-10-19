@@ -4,19 +4,10 @@ class DBusPython < Formula
   url 'http://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.2.0.tar.gz'
   sha1 '7a00f7861d26683ab7e3f4418860bd426deed9b5'
   
-  def patches
-    p = []
-    p << 'https://gist.github.com/hanxue/7048247/raw/698d65b94543872a0301793aa2c02c25e732fa44/dbus-python.patch'
-    # Patch to create setup.py for dbus-python
-    # Based on this bug https://bugs.freedesktop.org/show_bug.cgi?id=55439
-    # Original patch file at https://bugs.freedesktop.org/attachment.cgi?id=80061
-    p
-  end
-  
   def install
   	# Install dbus-python package dependency first
-    system "./configure", "--prefix=#{prefix}"
-    system "make", "install"
+    # system "./configure", "--prefix=#{prefix}"
+    # system "make", "install"
   end
 end
 
@@ -37,6 +28,29 @@ class Scribes < Formula
   depends_on "gnome-doc-utils"
   
   def install
+    install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
+
+    python do
+      DBusPython.new.brew { system python, *install_args }
+      
+        def patches
+		  p = []
+		  p << 'https://gist.github.com/hanxue/7048247/raw/698d65b94543872a0301793aa2c02c25e732fa44/dbus-python.patch'
+		  # Patch to create setup.py for dbus-python
+		  # Based on this bug https://bugs.freedesktop.org/show_bug.cgi?id=55439
+		  # Original patch file at https://bugs.freedesktop.org/attachment.cgi?id=80061
+		  p
+		end
+
+      system python, "setup.py", "install", "--prefix=#{prefix}"
+    end
+
+    man1.install Dir['docs/man/man1/*.1']
+
+    Dir["#{bin}/*"].each do |bin_file|
+      wrap bin_file, python.site_packages
+    end
+    
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--disable-silent-rules",
