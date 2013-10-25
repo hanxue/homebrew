@@ -25,7 +25,9 @@ class Postfix < Formula
   
 
   def install
-  	build.head? chdir('postfix/', :verbose => true)   # Git mirror is one level above
+  	if build.head?
+  	 chdir('postfix/', :verbose => true)   # Git mirror is one level above
+  	end
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}"
