@@ -8,6 +8,8 @@ class GithubBackup < Formula
   head 'https://github.com/joeyh/github-backup.git'
   
   depends_on 'cabal-install' => :build
+  depends_on 'MissingH' => :haskell
+  
   def install
     system "make", "install"
   end
