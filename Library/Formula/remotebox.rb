@@ -10,7 +10,7 @@ class Remotebox < Formula
   depends_on 'Gtk2'				=> :perl
   depends_on 'rdesktop'			=> :recommended
 
-  def patch
+  def patches
   	# Perl script uses $Bin which does not resolve to symlink. 
   	# Change to #RealBin - resolve symlink - and proper paths
   	DATA
@@ -23,8 +23,8 @@ class Remotebox < Formula
 end
 
 __END__
---- /usr/local/bin/remotebox	2013-10-19 15:45:38.000000000 +0800
-+++ /tmp/remotebox.MODIFIED	2013-10-29 01:06:31.000000000 +0800
+--- bin/remotebox	2013-10-19 15:45:38.000000000 +0800
++++ bin/remotebox	2013-10-29 01:06:31.000000000 +0800
 @@ -3,19 +3,19 @@
  # RemoteBox v1.6 (c) 2010-2013 Ian Chapman. Licenced under the terms of the GPL
  use strict;
