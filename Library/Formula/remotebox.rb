@@ -10,6 +10,7 @@ class Remotebox < Formula
   depends_on 'Gtk2'				=> :perl
   depends_on 'rdesktop'			=> :recommended
 
+<<<<<<< HEAD
   def patches
   	# Perl script uses $Bin which does not resolve to symlink. 
   	# Change to #RealBin - resolve symlink - and proper paths
@@ -49,3 +50,12 @@ __END__
  # ***************************************************
  
  require 'vboxserializers.pl';
+=======
+
+  def install
+    prefix.install Dir['*']
+    bin.mkdir
+	bin.install 'remotebox'
+  end
+end
+>>>>>>> 6b1b4e5ece6dafbb2ef7101fa690608a81b662e7
