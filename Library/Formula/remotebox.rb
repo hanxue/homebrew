@@ -12,8 +12,7 @@ class Remotebox < Formula
 
 
   def install
-    prefix.install Dir['*']
-    bin.mkdir
-	bin.install 'remotebox'
+    bin.install Dir['remotebox', 'share/remotebox/*']
+	prefix.install Dir['*']
   end
 end
