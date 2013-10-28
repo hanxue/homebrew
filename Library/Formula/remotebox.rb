@@ -7,6 +7,7 @@ class Remotebox < Formula
 
 
   depends_on 'SOAP::Lite' 		=> :perl
+  depends_on 'Gtk2'				=> :perl
   depends_on 'rdesktop'			=> :recommended
 
 
