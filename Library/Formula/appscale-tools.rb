@@ -57,7 +57,7 @@ class AppscaleTools < Formula
   
 
   def install
-    prefix.install Dir['bin'], Dir['lib'], Dir['templates'], ['README.md'], ['LICENSE']
+    prefix.install Dir['bin'], Dir['lib'], Dir['templates'], 'README.md', 'LICENSE'
     python do
       install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
       
