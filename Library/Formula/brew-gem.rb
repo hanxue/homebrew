@@ -5,6 +5,10 @@ class BrewGem < Formula
   url 'https://github.com/josh/brew-gem/archive/v0.1.2.tar.gz'
   sha1 'fccccc5e7f00cbd69ff66c3f9a0e365bfb39641e'
 
+  head do
+    url 'https://github.com/sorin-ionescu/brew-gem.git', using => :git
+  end
+
   def install
     bin.install 'bin/brew-gem'
   end
