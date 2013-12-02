@@ -15,6 +15,7 @@ class Gh < Formula
     #system 'go get github.com/jingweno/gh'
     ENV["PATH"] = ENV["PATH"] + ":" + buildpath + '/bin'
     system 'script/release'
+    system 'script/bootstrap'
     system 'go build'
     bin.install "bin/gh"
     bash_completion.install "etc/gh.bash_completion.sh"
