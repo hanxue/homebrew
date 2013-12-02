@@ -10,7 +10,12 @@ class Gh < Formula
 
   def install
     ENV["GOPATH"] = buildpath
-    system 'go get github.com/jingweno/gh'
+    system 'go get github.com/kr/godep'
+    system 'go get github.com/jingweno/gotask'
+    #system 'go get github.com/jingweno/gh'
+    ENV["PATH"] = ENV["PATH"] + ":" + buildpath + '/bin'
+    system 'script/release'
+    system 'go build'
     bin.install "bin/gh"
     bash_completion.install "etc/gh.bash_completion.sh"
     zsh_completion.install "etc/gh.zsh_completion" => "_gh"
