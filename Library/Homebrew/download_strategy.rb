@@ -220,6 +220,18 @@ class CurlDownloadStrategy < AbstractDownloadStrategy
     end
   end
 end
+class AxelDownloadStrategy < CurlDownloadStrategy
+  def _fetch
+    connections = ENV['HOMEBREW_AXEL_CONNECTIONS'] || 4
+    quiet_safe_system "axel", "-n", "#{connections}", "-a", "-o", "#{@temporary_path}", "#{@url}"
+  end
+
+  def fetch
+    ohai 'Using axel'
+    super
+  end
+ end
+
 
 # Detect and download from Apache Mirror
 class CurlApacheMirrorDownloadStrategy < CurlDownloadStrategy
@@ -786,7 +798,9 @@ end
 
 class DownloadStrategyDetector
   def self.detect(url, strategy=nil)
-    if strategy.nil?
+    if ARGV.include? '--use-axel'
+      AxelDownloadStrategy
+    elsif strategy.nil?
       detect_from_url(url)
     elsif Class === strategy && strategy < AbstractDownloadStrategy
         strategy
