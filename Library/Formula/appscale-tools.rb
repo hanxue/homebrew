@@ -54,6 +54,12 @@ class AppscaleTools < Formula
   end
 
   def install
+    fails_with :clang do
+      build 500.2.79
+      cause <<-EOS.undent
+        The Python YAML module will not compile with this version of clang
+        EOS
+    end
     ENV.prepend_create_path 'PYTHONPATH', libexec+'lib/python2.7/site-packages'
     install_args = [ "setup.py", "install", "--prefix=#{libexec}" ]
 
