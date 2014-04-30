@@ -23,6 +23,11 @@ class Freerdp < Formula
       sha1 "2793c0251396778b763b627e68dae1e0a5d41eab"
     end
   end
+  
+  devel do
+    url "http://pub.freerdp.com/releases/freerdp-1.1.0-beta%2b2013071101.tar.gz"
+    sha256 "9ccb1ef90663cec59d8c1222bebd4195c013433f42f0f7954c9b85d48fed1d62"
+  end
 
   head "https://github.com/FreeRDP/FreeRDP.git"
 
